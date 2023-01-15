@@ -8,6 +8,7 @@ export default function SignupPage() {
   const [inputCaptcha, setInputCaptcha] = useState("");
   const [darkMode, setDarkMode] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+  const [isValid, setIsValid] = useState(false);
   const theme = {
     backgroundColor: darkMode ? "black" : "white",
     color: darkMode ? "white" : "black",
@@ -34,9 +35,11 @@ export default function SignupPage() {
     e.preventDefault();
     if (inputCaptcha === generatedCaptcha) {
       setAlertMessage("Validated");
+      setIsValid(true);
     } else {
-      window.location.reload(true);
+      setGeneratedCaptcha(getCaptcha(5));
       setAlertMessage("Wrong Captcha");
+      setIsValid(false);
     }
   }
 
@@ -98,7 +101,11 @@ export default function SignupPage() {
           <div className="captcha-input  generated-captcha">
             {generatedCaptcha}
           </div>
-          <div className="captcha-output">{alertMessage}</div>
+          <div
+            className={isValid ? "captcha-output-success" : "captcha-output"}
+          >
+            {alertMessage}
+          </div>
           <div>
             <button className="captcha-btn-primary">Submit</button>
           </div>

@@ -52,6 +52,12 @@
   font-weight: bold;
   font-size: 1.5rem;
 }
+.captcha-output-success {
+  margin: 1rem 0;
+  color: green;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
 .captcha-btn-primary {
   width: 100%;
   padding: 0.8rem 1rem;
