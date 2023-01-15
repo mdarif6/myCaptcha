@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./SignupPage.css";
 
 export default function SignupPage() {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
   const [generatedCaptcha, setGeneratedCaptcha] = useState("");
   const [inputCaptcha, setInputCaptcha] = useState("");
   const [darkMode, setDarkMode] = useState(false);
@@ -71,21 +69,11 @@ export default function SignupPage() {
         >
           <div className="captcha-input">
             <div className="flipcart-input-label">Username</div>
-            <input
-              type="text"
-              placeholder="Type your username"
-              required
-              onChange={(e) => setUserName(e.target.value)}
-            />
+            <input type="text" placeholder="Type your username" required />
           </div>
           <div className="captcha-input">
             <div className="flipcart-input-label">Password</div>
-            <input
-              type="password"
-              placeholder="Type your password"
-              required
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <input type="password" placeholder="Type your password" required />
           </div>
 
           <div className="captcha-input">
