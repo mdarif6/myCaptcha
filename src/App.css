@@ -4,14 +4,3 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-:root {
-  text-align: center;
-  background-image: linear-gradient(
-    to right,
-    rgb(242, 177, 242),
-    rgb(207, 112, 207),
-    rgb(195, 38, 195),
-    purple
-  );
-}

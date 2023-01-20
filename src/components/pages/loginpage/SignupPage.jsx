@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useTheme } from "../../../context/theme-context";
+import { getFontColor } from "../../../utility/utility";
 import "./SignupPage.css";
 
 export default function SignupPage() {
   const [generatedCaptcha, setGeneratedCaptcha] = useState("");
   const [inputCaptcha, setInputCaptcha] = useState("");
-  const [darkMode, setDarkMode] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [isValid, setIsValid] = useState(false);
-  const theme = {
-    backgroundColor: darkMode ? "black" : "white",
-    color: darkMode ? "white" : "black",
-  };
 
+  const { theme, setTheme } = useTheme();
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()";
 
@@ -41,26 +39,33 @@ export default function SignupPage() {
     }
   }
 
+  const toggleHandler = () => {
+    setTheme((theme) => (theme === "dark" ? "light" : "dark"));
+  };
+
   return (
     <div className="captcha-wrapper">
-      <div className="captcha-toggle-heading-and-btn">
+      <div
+        className="captcha-toggle-heading-and-btn"
+        style={{ color: getFontColor(theme) }}
+      >
         <div className="captcha-toggle-heading">Appearance</div>
         <div className="captcha-toggle-btn">
-          {darkMode === false ? (
-            <i
-              className="fas fa-moon"
-              onClick={() => setDarkMode((prevDark) => !prevDark)}
-            ></i>
+          {theme === "light" ? (
+            <i className="fas fa-moon" onClick={toggleHandler}></i>
           ) : (
-            <i
-              className="fas fa-sun"
-              onClick={() => setDarkMode((prevDark) => !prevDark)}
-            ></i>
+            <i className="fas fa-sun" onClick={toggleHandler}></i>
           )}
         </div>
       </div>
 
-      <div className="captcha-login-window" style={theme}>
+      <div
+        className="captcha-login-window"
+        style={{
+          backgroundColor: theme === "light" ? "white" : "black",
+          color: getFontColor(theme),
+        }}
+      >
         <div className="captcha-heading">Sign Up</div>
         <form
           className="captcha-inputs"
@@ -95,7 +100,13 @@ export default function SignupPage() {
             {alertMessage}
           </div>
           <div>
-            <button className="captcha-btn-primary">Submit</button>
+            <button
+              className={
+                theme === "light" ? "captcha-btn-primary" : "captcha-btn-dark"
+              }
+            >
+              Submit
+            </button>
           </div>
         </form>
       </div>

@@ -22,7 +22,6 @@
   font-size: 1.5rem;
   font-weight: bold;
   padding-bottom: 1rem;
-  color: purple;
 }
 .captcha-input input {
   width: 100%;
@@ -64,13 +63,18 @@
   color: white;
   font-size: 1rem;
   font-weight: bold;
-  background-image: linear-gradient(
-    to right,
-    rgb(242, 177, 242),
-    rgb(207, 112, 207),
-    rgb(195, 38, 195),
-    purple
-  );
+  background-image: linear-gradient(to right, #fff68f, #e6a91d);
+  border: none;
+  border-radius: 1.5rem;
+  cursor: pointer;
+}
+.captcha-btn-dark {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  background-image: linear-gradient(to right, #05010d, #082c6c);
   border: none;
   border-radius: 1.5rem;
   cursor: pointer;
